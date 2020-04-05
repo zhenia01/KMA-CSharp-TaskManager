@@ -1,9 +1,13 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+  ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    
+<h1 class="text-center display-1">
+  Task Manager
+  <i id="spinner" class="fa fas fa-spinner fa-spin invisible"></i>
+</h1>
+<div id="process-table-placeholder">
+  <partial name="ProcessTablePartial"/>
 </div>
+<div id="modal-placeholder"></div>
