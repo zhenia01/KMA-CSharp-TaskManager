@@ -1,0 +1,38 @@
+﻿@model (string ProcessInfo, System.Diagnostics.ProcessThreadCollection Threads)
+
+<div class="modal fade" id="module-list" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thread List - @Model.ProcessInfo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover table-sm">
+          <thead>
+          <tr>
+            <th scope="col" class="align-middle">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">State</th>
+            <th scope="col">Start time</th>
+          </tr>
+          </thead>
+          <tbody>
+          @for (int i = 0; i < Model.Threads.Count; i++)
+          {
+            var thread = Model.Threads[i];
+            <tr>
+              <th scope="row">@(i + 1)</th>
+              <td>@thread.Id</td>
+              <td>@thread.ThreadState.ToString()</td>
+              <td>@thread.StartTime</td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
