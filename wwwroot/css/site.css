@@ -24,6 +24,13 @@ a {
   border-color: #1861ac;
 }
 
+.long-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 10rem;
+  text-overflow: ellipsis
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
