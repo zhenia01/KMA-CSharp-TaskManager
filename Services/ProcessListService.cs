@@ -45,7 +45,7 @@ namespace TaskManager.Services
           {
             try
             {
-              var m = p.MainModule; // checking if process can be read
+              var unused = p.MainModule; // checking if process can be read
               return true;
             }
             catch (Win32Exception)
