@@ -52,8 +52,13 @@ namespace TaskManager.Services
             {
               return false;
             }
+            catch (InvalidOperationException)
+            {
+              return false;
+            }
           }).Select(p => new RunningProcess(p)));
       }
+
       SortAsync().Wait();
     }
 
@@ -73,8 +78,13 @@ namespace TaskManager.Services
             {
               return false;
             }
+            catch (Win32Exception)
+            {
+              return false;
+            }
           }));
       }
+
       SortAsync().Wait();
     }
 
@@ -129,7 +139,7 @@ namespace TaskManager.Services
       lock (_locker)
       {
         var p = _processes.Find(pr => pr.Id == id);
-        if (p != null)   
+        if (p != null)
         {
           p.Kill();
           _processes.Remove(p);
