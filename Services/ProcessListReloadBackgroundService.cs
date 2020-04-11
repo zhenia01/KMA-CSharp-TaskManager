@@ -22,7 +22,7 @@ namespace TaskManager.Services
         {
           try
           {
-            _processList.Reload();
+            await _processList.Reload();
             await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
           } 
           catch (OperationCanceledException) { }

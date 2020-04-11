@@ -33,10 +33,10 @@ namespace TaskManager.Services
 
     public ProcessListService()
     {
-      Reload();
+      Reload().Wait();
     }
 
-    public void Reload()
+    public async Task Reload()
     {
       lock (_locker)
       {
@@ -59,10 +59,10 @@ namespace TaskManager.Services
           }).Select(p => new RunningProcess(p)));
       }
 
-      SortAsync().Wait();
+      await SortAsync();
     }
 
-    public void Update()
+    public async Task Update()
     {
       lock (_locker)
       {
@@ -85,7 +85,7 @@ namespace TaskManager.Services
           }));
       }
 
-      SortAsync().Wait();
+      await SortAsync();
     }
 
     public async Task SortAsync(SortingOption option)
